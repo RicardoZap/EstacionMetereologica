@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Estación Meteorológica</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="password">Password</string>
+    <string name="estacion_meteorologica">Estación Meteorológica</string>
+    <string name="usuario">Usuario</string>
+    <string name="correo">Correo</string>
+    <string name="nombre_de_usuario">Nombre de usuario</string>
+    <string name="permisos_inactivos">Permisos Inactivos</string>
+    <string name="status">Status</string>
+    <string name="permission">Permission</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fecha">fecha</string>
+    <string name="temperatura">temperatura</string>
+    <string name="humedad">humedad</string>
+    <string name="latitud">latitud</string>
+    <string name="longitud">longitud</string>
+</resources>

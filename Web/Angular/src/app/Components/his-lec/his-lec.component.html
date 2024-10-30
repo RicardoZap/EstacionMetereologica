@@ -1,0 +1,124 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav mr-12">
+        <img width="30" height="30" src="assets/atmospheric.png" alt="Logo">
+        <a class="nav-link active text-primary" href="#/home"><span>Inicio</span></a>
+        <a class="nav-link active text-primary" href="#/his-lec"><span>Historial Lecturas</span></a>
+        <a class="nav-link active text-primary" href="#/ltr"><span>Lect.Tiempo Real</span></a>
+      <div class="navbar-nav" alignment="right">
+        <a class="nav-link  text-danger"  href="#/login" (click)="logout()"><span>Logout</span></a>
+      </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div [ngSwitch]="detail">
+  <div *ngSwitchCase="true">
+    <div [ngSwitch]="component">
+<div class="container text-center mt-4">
+  <div class="row justify-content-center">
+    <div class="card-body col-4">
+      <div class="card-header bg-light text-light" id="card-body">
+        <div>
+          <h5><span>Buscar por temperatura</span></h5>
+          <input class="form-control text-center" type="number" [(ngModel)]="findLectura.temperatura">
+          <input class="btn btn-block bg-light text-primary mt-2 text-center" type="submit"  value="Buscar" (click)="mostrarTemp(findLectura.temperatura)">
+        </div>
+        <div class="mt-3">
+          <h5><span>Buscar por humedad</span></h5>
+          <input class="form-control text-center" type="number" name="humedad" [(ngModel)]="findLectura.humedad">
+          <input class="btn btn-block bg-light text-primary mt-2" type="submit" name="buscarHum" value="Buscar" (click)="mostrarHumedad(findLectura.humedad)">
+        </div>
+        <div class="mt-3">
+          <h5><span>Buscar por dia</span></h5>
+          <div class="row">
+          <input class="form-control col-4 offset-1 text-center" type="number" name="dia" [(ngModel)]="findDay.ano" placeholder="Año">
+          <input class="form-control col-3 text-center" type="number" name="dia" [(ngModel)]="findDay.mes" placeholder="Mes">
+          <input class="form-control col-3 text-center" type="number" name="dia" [(ngModel)]="findDay.dia" placeholder="Dia">
+          </div>
+          <input class="btn btn-block bg-light text-primary mt-2" type="submit" name="buscardia" value="Buscar" (click)="mostrarDia(findDay)">
+        </div>
+        <div class="mt-3">
+          <h5><span>Buscar por fecha</span></h5>
+          <input class="form-control text-center" type="text" name="fecha" [(ngModel)]="findBtw.fecha1" placeholder="yyyy/mm/dd">
+          <input class="form-control mt-2 text-center" type="text" name="fecha" [(ngModel)]="findBtw.fecha2" placeholder="yyyy/mm/dd">
+          <input class="btn btn-block bg-light text-primary mt-2" type="submit" name="buscarFecha" value="Buscar" (click)="mostrarFecha(findBtw)">
+        </div>
+      </div>
+    </div>
+    <div class="card-body col-8" >
+        <div class="card-header bg-light text-light" id="card-body">
+        <h5><span>Historial de lecturas</span></h5>
+        <div>
+          <table class="table">
+            <thead class="ml-2">
+              <tr class="text-light">
+                <th scope="col">Temperatura</th>
+                <th scope="col">Humedad</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let lectura of lecturas_array | paginate: { itemsPerPage: 7, currentPage: page }" class="text-light">
+                <th scoope="row">{{lectura.temperatura}}</th>
+                <td>{{lectura.humedad}}</td>
+                <td>{{lectura.created_at}}</td>
+                <td class="form-group">
+                  <button class="btn btn-info ml-3" (click)="showLectura(lectura)">Detalles</button>
+                  <button class="btn btn-light text-info ml-2" type="button" (click)="deletedata(lectura)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="page = $event" previousLabel="Anterior"
+                      nextLabel="Siguiente"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="container mt-1 text-center" *ngSwitchCase="false">
+    <div class="card text-light" id="deg">
+      <div class="card-body">
+        <h3 class="card-title">Detalles de la Lectura</h3>
+      </div>
+    </div>
+    <div class="card-body text-light mt-2" id="master">
+    <h5 class="mt-12 mb-4">
+    <table class="table">
+      <thead class="ml-2">
+        <tr class="text-light">
+          <th>Temperatura</th>
+          <th>Humedad</th>
+          <th>Latitud</th>
+          <th>Longitud</th>
+          <th>Fecha</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody class="text-light">
+      <td>{{upLectura.temperatura}}</td>
+      <td>{{upLectura.humedad}}</td>
+      <td>{{upLectura.latitud}}</td>
+      <td>{{upLectura.longitud}}</td>
+      <td>{{upLectura.created_at}}</td>
+      <td>
+        <button class="btn btn-light text-info mr-8 mt-12" (click)="back()">regresar</button>
+      </td>  
+    </tbody>
+    </table>    
+    </h5>
+    </div>
+    
+  </div>
+</div>
+
+
